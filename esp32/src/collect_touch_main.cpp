@@ -148,15 +148,15 @@ void streamSampleIfDue() {
     gHeaderSentForSession = true;
   }
 
-  Serial.print(now);
-  Serial.print(',');
-  Serial.print(gState.label);
-  Serial.print(',');
-  Serial.print(gState.sampleIndex);
+  // Serial.print(now);
+  // Serial.print(',');
+  // Serial.print(gState.label);
+  // Serial.print(',');
+  // Serial.print(gState.sampleIndex);
 
   for (size_t i = 0; i < kTouchPinCount; ++i) {
-    Serial.print(',');
     Serial.print(touchRead(kTouchPins[i]));
+    Serial.print(" ");
   }
   Serial.println();
 
@@ -176,11 +176,12 @@ void setup() {
     delay(10);
   }
 
-  Serial.println("READY touch_csv_logger");
+  startRecording("none");
+  // Serial.println("READY touch_csv_logger");
   printStatus();
 }
 
 void loop() {
-  handleSerialInput();
+  // handleSerialInput();
   streamSampleIfDue();
 }
