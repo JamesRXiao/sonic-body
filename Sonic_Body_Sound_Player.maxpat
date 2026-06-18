@@ -13,10 +13,115 @@
         "boxes": [
             {
                 "box": {
+                    "bubble": 1,
+                    "id": "obj-182",
+                    "linecount": 9,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 573.2026324868202, 646.051227927208, 150.0, 135.0 ],
+                    "presentation_linecount": 9,
+                    "text": "- if output is \"done N clipname\" and counter is still incrementing, eval to 1\n- this loops playback when sound is done and overrides other inputs (max's right-to-left priority)"
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "bubbleside": 3,
+                    "id": "obj-165",
+                    "linecount": 2,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 299.9183291196823, 531.9066445827484, 150.0, 38.0 ],
+                    "presentation_linecount": 2,
+                    "text": "- if yarn is touched, eval to 1"
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "bubbleside": 0,
+                    "id": "obj-141",
+                    "linecount": 3,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 598.7952028512955, 557.9909845590591, 150.0, 67.0 ],
+                    "presentation_linecount": 3,
+                    "text": "- if the output is \"done N clipname\", eval to 1\n(reverses above)"
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "id": "obj-138",
+                    "linecount": 2,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 573.2026324868202, 448.00302731990814, 150.0, 38.0 ],
+                    "text": "- if the output is \"start N clipname\", eval to 1"
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "bubbleside": 0,
+                    "id": "obj-131",
+                    "linecount": 3,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 378.4313845038414, 796.9668953418732, 150.0, 67.0 ],
+                    "text": "- outputs either \n\"start N clipname\" or\n\"done N clipname\""
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "bubbleside": 3,
+                    "id": "obj-128",
+                    "linecount": 4,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 53.594772934913635, 682.3529627323151, 150.0, 66.0 ],
+                    "text": "- on input 0, the playlist is silent\n- on input 1, the playlist starts playing"
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "bubbleside": 3,
+                    "id": "obj-124",
+                    "linecount": 7,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 48.36601459980011, 508.6837537288666, 150.0, 107.0 ],
+                    "text": "- increments this counter by 1 if yarn is held\n- freezes at 0 otherwise\n- this is because max9 processes inputs of priority right-to-left"
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "bubbleside": 3,
+                    "id": "obj-120",
+                    "linecount": 4,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 63.0, 430.71896785497665, 150.0, 66.0 ],
+                    "text": "if threshold <50:\n    left output -> 1\nelse:\n    right output -> 0"
+                }
+            },
+            {
+                "box": {
                     "data": {
                         "clips": [
                             {
-                                "absolutepath": "C:/Users/james/Downloads/freesound_community-one-note-electric-guitar-90716.mp3",
+                                "absolutepath": "freesound_community-one-note-electric-guitar-90716.mp3",
                                 "filename": "freesound_community-one-note-electric-guitar-90716.mp3",
                                 "filekind": "audiofile",
                                 "id": "u794001187",
@@ -65,7 +170,7 @@
                     "data": {
                         "clips": [
                             {
-                                "absolutepath": "C:/Users/james/Downloads/freesound_community-piano-g-6200.mp3",
+                                "absolutepath": "freesound_community-piano-g-6200.mp3",
                                 "filename": "freesound_community-piano-g-6200.mp3",
                                 "filekind": "audiofile",
                                 "id": "u117001179",
@@ -114,7 +219,7 @@
                     "data": {
                         "clips": [
                             {
-                                "absolutepath": "C:/Users/james/Downloads/freesound_community-high-note-103771.mp3",
+                                "absolutepath": "freesound_community-high-note-103771.mp3",
                                 "filename": "freesound_community-high-note-103771.mp3",
                                 "filekind": "audiofile",
                                 "id": "u151001171",
@@ -163,7 +268,7 @@
                     "data": {
                         "clips": [
                             {
-                                "absolutepath": "C:/Users/james/Downloads/freesound_community-sticky-note-43933.mp3",
+                                "absolutepath": "freesound_community-sticky-note-43933.mp3",
                                 "filename": "freesound_community-sticky-note-43933.mp3",
                                 "filekind": "audiofile",
                                 "id": "u287001163",
@@ -213,7 +318,7 @@
                     "data": {
                         "clips": [
                             {
-                                "absolutepath": "C:/Users/james/Downloads/soundsgoodmusic-guitar-note-375696.mp3",
+                                "absolutepath": "soundsgoodmusic-guitar-note-375696.mp3",
                                 "filename": "soundsgoodmusic-guitar-note-375696.mp3",
                                 "filekind": "audiofile",
                                 "id": "u699001053",
@@ -263,13 +368,15 @@
                     "data": {
                         "clips": [
                             {
-                                "absolutepath": "C:/Users/james/Downloads/u_df365hdxp7-cinematic-piano-note-362716.mp3",
+                                "absolutepath": "u_df365hdxp7-cinematic-piano-note-362716.mp3",
                                 "filename": "u_df365hdxp7-cinematic-piano-note-362716.mp3",
                                 "filekind": "audiofile",
                                 "id": "u369001030",
                                 "selection": [ 0.0, 1.0 ],
                                 "loop": 0,
-                                "content_state": {                                }
+                                "content_state": {
+                                    "loop": 0
+                                }
                             }
                         ]
                     },
@@ -1021,7 +1128,7 @@
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 216.86747789382935, 606.6054425239563, 98.0, 22.0 ],
+                    "patching_rect": [ 216.9934709072113, 613.0719147920609, 98.0, 22.0 ],
                     "text": "if $i1 == 1 then 1"
                 }
             },
@@ -1032,7 +1139,7 @@
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 331.32531344890594, 605.4006232023239, 98.0, 22.0 ],
+                    "patching_rect": [ 330.7189646959305, 613.0719147920609, 98.0, 22.0 ],
                     "text": "if $i1 == 0 then 0"
                 }
             },
@@ -2798,7 +2905,7 @@
             {
                 "patchline": {
                     "destination": [ "obj-175", 0 ],
-                    "midpoints": [ 226.36747789382935, 590.0800430774689, 226.36747789382935, 590.0800430774689 ],
+                    "midpoints": [ 226.36747789382935, 590.0800430774689, 226.4934709072113, 590.0800430774689 ],
                     "order": 3,
                     "source": [ "obj-177", 0 ]
                 }
@@ -2806,7 +2913,7 @@
             {
                 "patchline": {
                     "destination": [ "obj-176", 0 ],
-                    "midpoints": [ 226.36747789382935, 591.8454750776291, 340.82531344890594, 591.8454750776291 ],
+                    "midpoints": [ 226.36747789382935, 591.8454750776291, 340.2189646959305, 591.8454750776291 ],
                     "order": 1,
                     "source": [ "obj-177", 0 ]
                 }

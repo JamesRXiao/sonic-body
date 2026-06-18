@@ -7,7 +7,7 @@ constexpr uint32_t kSampleRateHz = 50;
 constexpr uint32_t kSampleIntervalMs = 1000 / kSampleRateHz;
 constexpr size_t kMaxLabelLength = 63;
 
-constexpr uint8_t kTouchPins[] = {2, 4, 12, 13, 14, 15};
+constexpr uint8_t kTouchPins[] = {2, 4, 12, 13, 14, 15, 27, 33, 32};
 constexpr size_t kTouchPinCount = sizeof(kTouchPins) / sizeof(kTouchPins[0]);
 
 struct RecorderState {
@@ -171,6 +171,7 @@ void streamSampleIfDue() {
 }  // namespace
 
 void setup() {
+  gpio_set_pull_mode(GPIO_NUM_0, GPIO_FLOATING);
   Serial.begin(kSerialBaud);
   while (!Serial && millis() < 2000) {
     delay(10);
