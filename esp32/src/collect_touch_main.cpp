@@ -20,7 +20,6 @@ namespace {
   uint32_t now = 0;
   uint32_t gNextSampleAtMs = 0;
 
-
   void printHeader() {
     for (size_t i = 0; i < kTouchPinCount; ++i) {
       Serial.print("gpio");
@@ -39,7 +38,7 @@ namespace {
     Serial.println(kSampleRateHz);
   }
 
-  void startRecording(const String &label) {
+  void startRecording() {
     gState.isRecording = true;
     gState.sampleIndex = 0;
     printStatus();
@@ -87,7 +86,7 @@ void setup() {
     delay(10);
   }
 
-  startRecording(" ");
+  startRecording();
 }
 
 void loop() {
