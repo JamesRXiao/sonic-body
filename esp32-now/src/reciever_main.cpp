@@ -10,10 +10,10 @@
 // Structure example to receive data
 // Must match the sender structure
 typedef struct struct_message {
-  int id;
-  int x;
-  int y;
-}struct_message;
+    int id;
+    bool isRecording;
+    int senseVals[9];
+} struct_message;
 
 // Create a struct_message called myData
 struct_message myData;
