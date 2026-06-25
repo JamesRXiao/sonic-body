@@ -7,11 +7,18 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
+//initialize timing
+constexpr uint32_t kSerialBaud = 115200;
+constexpr uint32_t kSampleRateHz = 50;
+constexpr uint32_t kSampleIntervalMs = 1000 / kSampleRateHz;
+uint32_t gNextSampleAtMs = 0;
+uint32_t now = 0;
+
 // Structure example to receive data
 // Must match the sender structure
 typedef struct struct_message {
     int id;
-    bool isRecording;
+    int sampleIndex = 0;
     int senseVals[9];
 } struct_message;
 
@@ -26,23 +33,46 @@ struct_message board3;
 // Create an array with all the structures
 struct_message boardsStruct[3] = {board1, board2, board3};
 
+// get size constants
+constexpr size_t kTouchPinCount = sizeof(myData.senseVals) / sizeof(myData.senseVals[0]);
+constexpr size_t senderBoardsCount = sizeof(boardsStruct) / sizeof(boardsStruct[0]);
+
 // callback function that will be executed when data is received
 void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) {
   char macStr[18];
+
   Serial.print("Packet received from: ");
   snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
            mac_addr[0], mac_addr[1], mac_addr[2], mac_addr[3], mac_addr[4], mac_addr[5]);
   Serial.println(macStr);
   memcpy(&myData, incomingData, sizeof(myData));
+  int boardIndex = myData.id - 1;
   Serial.printf("Board ID %u: %u bytes\n", myData.id, len);
+  
   // Update the structures with the new incoming data
-  boardsStruct[myData.id-1].x = myData.x;
-  boardsStruct[myData.id-1].y = myData.y;
-  Serial.printf("x value: %d \n", boardsStruct[myData.id-1].x);
-  Serial.printf("y value: %d \n", boardsStruct[myData.id-1].y);
-  Serial.println();
+  if (myData.sampleIndex > boardsStruct[boardIndex].sampleIndex) {
+    for (size_t i = 0; i < kTouchPinCount; ++i) {
+      boardsStruct[boardIndex].senseVals[i] = myData.senseVals[i];
+    }
+    boardsStruct[boardIndex].sampleIndex = myData.sampleIndex;
+  }
 }
- 
+
+//function to print all current data
+void printDataIfDue(){
+  now = millis();
+  if (now >= gNextSampleAtMs) {
+    for (size_t i = 0; i < senderBoardsCount; ++i) {
+      for (size_t j = 0; j < kTouchPinCount; ++j) {
+        Serial.print(boardsStruct[i].senseVals[j]);
+        Serial.print(" ");
+      }
+    }
+    Serial.println();
+    gNextSampleAtMs = now + kSampleIntervalMs;
+  }
+}
+
 void setup() {
   //Initialize Serial Monitor
   Serial.begin(115200);
@@ -56,19 +86,11 @@ void setup() {
     return;
   }
   
-  // Once ESPNow is successfully Init, we will register for recv CB to
-  // get recv packer info
+  // Once ESPNow is successfully Init, we will register for recv CB to get recv packer info
   esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
 }
  
 void loop() {
   // Acess the variables for each board
-  /*int board1X = boardsStruct[0].x;
-  int board1Y = boardsStruct[0].y;
-  int board2X = boardsStruct[1].x;
-  int board2Y = boardsStruct[1].y;
-  int board3X = boardsStruct[2].x;
-  int board3Y = boardsStruct[2].y;*/
-
-  delay(10000);  
+  printDataIfDue();
 }

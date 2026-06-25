@@ -13,7 +13,9 @@ constexpr uint32_t kSampleRateHz = 50;
 constexpr uint32_t kSampleIntervalMs = 1000 / kSampleRateHz;
 uint32_t gNextSampleAtMs = 0;
 uint32_t now = 0;
-uint32_t sampleIndex = 0;
+
+//initialize flags
+bool isRecording = false;
 bool sampled = false;
 
 // initialize pins
@@ -21,14 +23,15 @@ constexpr uint8_t kTouchPins[] = {2, 4, 12, 13, 14, 15, 27, 33, 32};
 constexpr size_t kTouchPinCount = sizeof(kTouchPins) / sizeof(kTouchPins[0]);
 
 // REPLACE WITH THE RECEIVER'S MAC Address
-// original board's mac address is 68:fe:71:91:47:00
-uint8_t broadcastAddress[] = {0x68, 0xFE, 0x71, 0x91, 0x47, 0x00};
+// original board's MAC address is 68:fe:71:91:47:00
+// new board's MAC address is 8c:94:df:9f:5e:80
+uint8_t broadcastAddress[] = {0x8C, 0x94, 0xDF, 0x9F, 0x5E, 0x80};
 
 // Structure example to send data
 // Must match the receiver structure
 typedef struct struct_message {
     int id; // must be unique for each sender board
-    bool isRecording = false;
+    int sampleIndex;
     int senseVals[9];
 } struct_message;
 
@@ -42,26 +45,26 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
 }
  
 void startRecording() {
-  myData.isRecording = true;
-  sampleIndex = 0;
+  isRecording = true;
+  myData.sampleIndex = 0;
   gNextSampleAtMs = millis();
 }
 
 void streamSampleIfDue() {
   sampled = false;
-  if (myData.isRecording) {
+  if (isRecording) {
     
     //only continue when internal clock is greater than next sample time
     now = millis();
 
     if (now >= gNextSampleAtMs) {
-      //print the sensor data
+      //get the sensor data
       for (size_t i = 0; i < kTouchPinCount; ++i) {
         myData.senseVals[i] = touchRead(kTouchPins[i]);
       }
       
       gNextSampleAtMs = now + kSampleIntervalMs; //set the time for the next sample
-      ++sampleIndex; //increment the sample index
+      ++myData.sampleIndex; //increment the sample index
       sampled = true;
     }
   }
@@ -88,7 +91,7 @@ void sendMessageIfDue() {
 
 void setup() {
   // Init Serial Monitor
-  Serial.begin(115200);
+  Serial.begin(kSerialBaud);
 
   // Set device as a Wi-Fi Station
   WiFi.mode(WIFI_STA);
