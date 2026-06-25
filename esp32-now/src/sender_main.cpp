@@ -30,9 +30,9 @@ uint8_t broadcastAddress[] = {0x8C, 0x94, 0xDF, 0x9F, 0x5E, 0x80};
 // Structure example to send data
 // Must match the receiver structure
 typedef struct struct_message {
-    int id; // must be unique for each sender board
-    int sampleIndex;
-    int senseVals[9];
+    uint32_t id; // must be unique for each sender board
+    uint32_t sampleIndex;
+    uint32_t senseVals[9];
 } struct_message;
 
 struct_message myData; // Create a struct_message called myData

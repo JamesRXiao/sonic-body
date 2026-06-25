@@ -17,9 +17,9 @@ uint32_t now = 0;
 // Structure example to receive data
 // Must match the sender structure
 typedef struct struct_message {
-    int id;
-    int sampleIndex = 0;
-    int senseVals[9];
+    uint32_t id;
+    uint32_t sampleIndex = 0;
+    uint32_t senseVals[9];
 } struct_message;
 
 // Create a struct_message called myData
