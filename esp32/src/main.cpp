@@ -7,7 +7,8 @@ namespace {
   constexpr uint32_t kSampleIntervalMs = 1000 / kSampleRateHz;
 
   //initialize pins
-  constexpr uint8_t kTouchPins[] = {2, 4, 12, 13, 14, 15, 27, 33, 32};
+  constexpr uint8_t kTouchPins[] = {15, 2, 4, 13, 12, 14, 27, 33, 32};
+  //constexpr uint8_t kTouchPins[] = {2, 4, 12, 13, 14, 15, 27, 33, 32};
   constexpr size_t kTouchPinCount = sizeof(kTouchPins) / sizeof(kTouchPins[0]);
 
   struct RecorderState {
