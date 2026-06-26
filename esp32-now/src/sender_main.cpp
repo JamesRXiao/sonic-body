@@ -103,8 +103,7 @@ void setup() {
     return;
   }
 
-  // Once ESPNow is successfully Init, we will register for Send CB to
-  // get the status of Transmitted packet
+  // Once ESPNow is successfully Init, we will register for Send CB to get the status of Transmitted packet
   esp_now_register_send_cb(esp_now_send_cb_t(OnDataSent));
   
   // Register peer
