@@ -27,11 +27,11 @@ struct_message myData;
 
 // Create a structure to hold the readings from each board
 struct_message board1;
-struct_message board2;
-struct_message board3;
+// struct_message board2;
+// struct_message board3;
 
 // Create an array with all the structures
-struct_message boardsStruct[3] = {board1, board2, board3};
+struct_message boardsStruct[3] = {board1};
 
 // get size constants
 constexpr size_t kTouchPinCount = sizeof(myData.senseVals) / sizeof(myData.senseVals[0]);
@@ -40,14 +40,14 @@ constexpr size_t senderBoardsCount = sizeof(boardsStruct) / sizeof(boardsStruct[
 // callback function that will be executed when data is received
 void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) {
   char macStr[18];
-
-  Serial.print("Packet received from: ");
-  snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
-           mac_addr[0], mac_addr[1], mac_addr[2], mac_addr[3], mac_addr[4], mac_addr[5]);
-  Serial.println(macStr);
+  
+  // Serial.print("Packet received from: ");
+  // snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
+  //          mac_addr[0], mac_addr[1], mac_addr[2], mac_addr[3], mac_addr[4], mac_addr[5]);
+  // Serial.println(macStr);
   memcpy(&myData, incomingData, sizeof(myData));
   int boardIndex = myData.id - 1;
-  Serial.printf("Board ID %u: %u bytes\n", myData.id, len);
+  // Serial.printf("Board ID %u: %u bytes\n", myData.id, len);
   
   // Update the structures with the new incoming data
   if (myData.sampleIndex > boardsStruct[boardIndex].sampleIndex) {
