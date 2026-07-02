@@ -86,7 +86,10 @@ void setNumBoards() {
     getNumBoards();
     repeat = getYes();
   }
-  boardsStruct.resize(static_cast<size_t>(numBoards));
+}
+
+void setStaticNumBoards() {
+  numBoards = 1; //this should change based on how many boards are connected
 }
 
 // Callback function that will be executed when data is received
@@ -105,11 +108,11 @@ void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) 
   Serial.printf("Board ID %u: %u bytes\n", myData.id, len);*/
 
   // Update the structures with the new incoming data
-  if (myData.sampleIndex > boardsStruct.at(boardIndex).sampleIndex) {
+  if (myData.sampleIndex > boardsStruct[boardIndex].sampleIndex) {
     for (size_t i = 0; i < kTouchPinCount; ++i) {
-      boardsStruct.at(boardIndex).senseVals[i] = myData.senseVals[i];
+      boardsStruct[boardIndex].senseVals[i] = myData.senseVals[i];
     }
-    boardsStruct.at(boardIndex).sampleIndex = myData.sampleIndex;
+    boardsStruct[boardIndex].sampleIndex = myData.sampleIndex;
   }
 }
 
@@ -143,7 +146,9 @@ void setup() {
   }
 
   // Set expected # of sender boards
-  setNumBoards();
+  //setNumBoards();
+  setStaticNumBoards();
+  boardsStruct.resize(static_cast<size_t>(numBoards));
 
   // Once ESPNow is successfully Init, we will register for recv CB to get recv packer info
   esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
