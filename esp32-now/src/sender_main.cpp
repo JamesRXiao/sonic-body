@@ -72,6 +72,16 @@ void streamSampleIfDue() {
   }
 }
 
+void printSampleIfDue() {
+  if (sampled) {
+    for (size_t i = 0; i < kTouchPinCount; ++i) {
+      Serial.print(myData.senseVals[i]);
+      Serial.print(" ");
+    }
+    Serial.println();
+  }
+}
+
 void sendMessageIfDue() {
   if (sampled) {
     // Send message via ESP-NOW
@@ -128,5 +138,6 @@ void setup() {
 void loop() {
   // Set values to send
   streamSampleIfDue();
+  //printSampleIfDue();
   sendMessageIfDue();
 }

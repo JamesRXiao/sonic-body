@@ -9,16 +9,21 @@ std::vector<struct_message> boardsStruct;
 
 constexpr uint32_t kSerialBaud = 115200;
 constexpr uint32_t kSampleRateHz = 50;
+constexpr uint32_t kSampleIntervalMs = 1000 / kSampleRateHz;
 int numBoards;
 char ch;
 
+// Change numBoards based on serial input
 void getNumBoards() {
   String serialInput = "";
   bool gotNumber = false;
   int inCh;
-  Serial.print("Number of sender boards: ");
+
+  Serial.print("Number of sender boards: "); // Query user
   while (!gotNumber) {
-    delay(kSampleRateHz);
+    delay(kSampleIntervalMs);
+
+    // Add numbers to buffer, stopping when user hits enter key
     while (Serial.available() > 0) {
       inCh = Serial.read();
       ch = static_cast<char>(inCh);
@@ -31,11 +36,11 @@ void getNumBoards() {
       }
     }
   }
-  numBoards = serialInput.toInt();
-  serialInput = "";
+  numBoards = serialInput.toInt(); //Convert buffer to integer
   Serial.println(numBoards);
 }
 
+// Returns true when user types 'y'
 bool getYes(){
   Serial.println("Type 'y' to confirm or press another key to try again.");
   Serial.println();
@@ -53,13 +58,13 @@ bool getYes(){
   }
 }
 
+// Resize the list of sender boards based on user input
 void setNumBoards() {
   bool repeat = true;
   while (repeat) {
     getNumBoards();
     repeat = getYes();
   }
-  boardsStruct.resize(static_cast<size_t>(numBoards));
 }
 
 void setup() {
@@ -69,8 +74,10 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("There are now ");
-  Serial.print(boardsStruct.size());
-  Serial.println(" elements in boardsStruct");
+  //Serial.print("There are now ");
+  //Serial.print(boardsStruct.size());
+  //Serial.println(" elements in boardsStruct");
+  Serial.println("0 390 500 900 600 700 900 200 300 ");
+  delay(kSampleIntervalMs);
   return;
 }

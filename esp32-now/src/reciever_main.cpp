@@ -34,78 +34,27 @@ constexpr size_t kTouchPinCount = sizeof(myData.senseVals) / sizeof(myData.sense
 // Create an array with empty struct_messages for each sender board
 std::vector<struct_message> boardsStruct;
 
-// Change numBoards based on serial input
-void getNumBoards() {
-  String serialInput = "";
-  bool gotNumber = false;
-  int inCh;
-
-  Serial.print("Number of sender boards: "); // Query user
-  while (!gotNumber) {
-    delay(kSampleIntervalMs);
-
-    // Add numbers to buffer, stopping when user hits enter key
-    while (Serial.available() > 0) {
-      inCh = Serial.read();
-      ch = static_cast<char>(inCh);
-      if (ch == '\n' || serialInput.length() > 8) {
-        gotNumber = true;
-        break;
-      }
-      else if (isDigit(inCh)){
-        serialInput += (char)inCh;
-      }
-    }
-  }
-  numBoards = serialInput.toInt(); //Convert buffer to integer
-  Serial.println(numBoards);
-}
-
-// Returns true when user types 'y'
-bool getYes(){
-  Serial.println("Type 'y' to confirm or press another key to try again.");
-  Serial.println();
-  while(Serial.available() == 0){
-    delay(100);
-  }
-  ch = static_cast<char>(Serial.read());
-  if (ch == 'y') {
-    Serial.print(numBoards);
-    Serial.println(" boards confirmed!");
-    return false;
-  }
-  else {
-    return true;
-  }
-}
-
-// Resize the list of sender boards based on user input
-void setNumBoards() {
-  bool repeat = true;
-  while (repeat) {
-    getNumBoards();
-    repeat = getYes();
-  }
-}
-
 void setStaticNumBoards() {
-  numBoards = 1; //this should change based on how many boards are connected
+  numBoards = 1; // This should change based on how many boards are connected
+  boardsStruct.resize(static_cast<size_t>(numBoards));
+}
+
+void printAckRecv(const uint8_t * mac_addr, uint32_t id, int len) {
+  // Get MAC address of sender board
+  char macStr[18];
+  snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
+           mac_addr[0], mac_addr[1], mac_addr[2], mac_addr[3], mac_addr[4], mac_addr[5]);
+  
+  Serial.print("Packet received from: ");
+  Serial.println(macStr);
+  Serial.printf("Board ID %u: %u bytes\n", id, len);
 }
 
 // Callback function that will be executed when data is received
 void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) {
+  memcpy(&myData, incomingData, sizeof(myData));
   int boardIndex = myData.id - 1;
-  memcpy(&myData, incomingData, sizeof(myData));
-  
-  //print ack recv message
-  
-  /*char macStr[18];
-  Serial.print("Packet received from: ");
-  snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
-           mac_addr[0], mac_addr[1], mac_addr[2], mac_addr[3], mac_addr[4], mac_addr[5]);
-  Serial.println(macStr);
-  memcpy(&myData, incomingData, sizeof(myData));
-  Serial.printf("Board ID %u: %u bytes\n", myData.id, len);*/
+  //printAckRecv(mac_addr, myData.id, len);
 
   // Update the structures with the new incoming data
   if (myData.sampleIndex > boardsStruct[boardIndex].sampleIndex) {
@@ -146,9 +95,7 @@ void setup() {
   }
 
   // Set expected # of sender boards
-  //setNumBoards();
   setStaticNumBoards();
-  boardsStruct.resize(static_cast<size_t>(numBoards));
 
   // Once ESPNow is successfully Init, we will register for recv CB to get recv packer info
   esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
