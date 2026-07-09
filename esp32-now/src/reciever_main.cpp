@@ -35,7 +35,7 @@ constexpr size_t kTouchPinCount = sizeof(myData.senseVals) / sizeof(myData.sense
 std::vector<struct_message> boardsStruct;
 
 void setStaticNumBoards() {
-  numBoards = 1; // This should change based on how many boards are connected
+  numBoards = 2; // This should change based on how many boards are connected
   boardsStruct.resize(static_cast<size_t>(numBoards));
 }
 
