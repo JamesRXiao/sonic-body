@@ -9,7 +9,7 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 34.0, 77.0, 1468.0, 705.0 ],
+        "rect": [ 97.0, 100.0, 1323.0, 811.0 ],
         "boxes": [
             {
                 "box": {
@@ -31,7 +31,7 @@
                     "numinlets": 0,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 755.3571356534958, 337.4999967813492, 143.0, 22.0 ],
+                    "patching_rect": [ 949.6666958332062, 238.5, 143.0, 22.0 ],
                     "style": "value_format",
                     "text": "r scale_threshold_margin"
                 }
@@ -95,7 +95,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-6",
-                    "index": 3,
+                    "index": 0,
                     "maxclass": "outlet",
                     "numinlets": 1,
                     "numoutlets": 0,
@@ -122,7 +122,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 708.4967544078827, 679.0849887728691, 143.0, 36.0 ],
+                    "patching_rect": [ 708.4967544078827, 679.0849887728691, 143.0, 35.0 ],
                     "text": "- counter value gets scaled to a volume %"
                 }
             },
@@ -136,7 +136,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 466.66668140888214, 503.921584546566, 138.0, 99.0 ],
+                    "patching_rect": [ 466.66668140888214, 503.921584546566, 138.0, 97.0 ],
                     "text": "- counter gets incremented until max counter value when thread is held\n- counter gets decremented to 0 when released"
                 }
             },
@@ -150,7 +150,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 405.0, 286.0, 194.0, 48.0 ],
+                    "patching_rect": [ 405.0, 286.0, 194.0, 47.0 ],
                     "text": "- outputs 1 when held\n- outputs (-1 * ramp_down_scale) when released"
                 }
             },
@@ -175,7 +175,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 650.9804127216339, 587.5817179083824, 118.42105150222778, 38.0 ],
+                    "patching_rect": [ 650.9804127216339, 587.5817179083824, 118.42105150222778, 37.0 ],
                     "text": "incoming audio file output"
                 }
             },
@@ -195,7 +195,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-11",
-                    "index": 1,
+                    "index": 0,
                     "maxclass": "outlet",
                     "numinlets": 1,
                     "numoutlets": 0,
@@ -206,7 +206,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-9",
-                    "index": 2,
+                    "index": 0,
                     "maxclass": "outlet",
                     "numinlets": 1,
                     "numoutlets": 0,
@@ -217,11 +217,11 @@
                 "box": {
                     "comment": "",
                     "id": "obj-7",
-                    "index": 2,
+                    "index": 0,
                     "maxclass": "inlet",
                     "numinlets": 0,
                     "numoutlets": 1,
-                    "outlettype": [ "signal" ],
+                    "outlettype": [ "" ],
                     "patching_rect": [ 774.509828388691, 591.5032866597176, 30.0, 30.0 ]
                 }
             },
@@ -233,7 +233,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 881.5882390737534, 142.94118243455887, 344.3850166797638, 66.0 ],
+                    "patching_rect": [ 881.5882390737534, 142.94118243455887, 344.3850166797638, 64.0 ],
                     "text": "#1 is group number\n\"#1-thresholds\" is dict name, where n is group number\n#2 is thread index in dict (1-9)\nall these get replaced with values in abstraction object"
                 }
             },
@@ -241,7 +241,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-4",
-                    "index": 1,
+                    "index": 0,
                     "maxclass": "inlet",
                     "numinlets": 0,
                     "numoutlets": 1,
@@ -257,7 +257,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 791.0, 98.82353353500366, 154.0, 38.0 ],
+                    "patching_rect": [ 791.0, 98.82353353500366, 154.0, 37.0 ],
                     "text": "fires when calibration is complete"
                 }
             },
@@ -307,7 +307,7 @@
                     "numinlets": 0,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 663.5, 337.49999356269836, 85.0, 22.0 ],
+                    "patching_rect": [ 1090.647521018982, 310.79137802124023, 85.0, 22.0 ],
                     "style": "value_format",
                     "text": "r max_counter"
                 }
@@ -439,7 +439,7 @@
                     "numoutlets": 2,
                     "outlettype": [ "", "bang" ],
                     "parameter_enable": 0,
-                    "patching_rect": [ 611.0, 166.5, 57.0, 27.0 ]
+                    "patching_rect": [ 611.0, 166.5, 57.0, 26.0 ]
                 }
             },
             {
@@ -537,7 +537,7 @@
             {
                 "patchline": {
                     "destination": [ "obj-15", 3 ],
-                    "midpoints": [ 673.0, 366.2499998509884, 952.9146499633789, 366.2499998509884 ],
+                    "midpoints": [ 1100.147521018982, 366.2499998509884, 952.9146499633789, 366.2499998509884 ],
                     "order": 0,
                     "source": [ "obj-29", 0 ]
                 }
@@ -545,7 +545,7 @@
             {
                 "patchline": {
                     "destination": [ "obj-49", 1 ],
-                    "midpoints": [ 673.0, 365.5816989541054, 891.6209240555763, 365.5816989541054, 891.6209240555763, 576.9084947705269, 670.9804127216339, 576.9084947705269 ],
+                    "midpoints": [ 1100.147521018982, 365.5816989541054, 1063.144366667373, 365.5816989541054, 1063.144366667373, 576.9084947705269, 670.9804127216339, 576.9084947705269 ],
                     "order": 1,
                     "source": [ "obj-29", 0 ]
                 }
@@ -679,6 +679,7 @@
                 }
             }
         ],
+        "autosave": 0,
         "styles": [
             {
                 "name": "bang_format",
