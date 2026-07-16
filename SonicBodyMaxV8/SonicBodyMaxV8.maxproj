@@ -2,8 +2,8 @@
     "name": "SonicBodyMaxV8",
     "version": 1,
     "creationdate": 3866457654,
-    "modificationdate": 3867066919,
-    "viewrect": [ 0.0, 57.0, 1536.0, 725.0 ],
+    "modificationdate": 3867072526,
+    "viewrect": [ 77.0, 101.0, 1435.0, 725.0 ],
     "autoorganize": 1,
     "hideprojectwindow": 0,
     "showdependencies": 1,
@@ -21,22 +21,14 @@
             "Sonic_Body_V8.maxpat": {
                 "kind": "patcher",
                 "local": 1
-            },
-            "threadv2.maxpat": {
-                "kind": "patcher",
-                "local": 1
             }
         },
         "media": {
-            "220.wav": {
-                "kind": "audiofile",
-                "local": 1
-            },
             "220_saw.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
-            "277.wav": {
+            "220.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
@@ -44,7 +36,7 @@
                 "kind": "audiofile",
                 "local": 1
             },
-            "329.wav": {
+            "277.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
@@ -52,7 +44,7 @@
                 "kind": "audiofile",
                 "local": 1
             },
-            "440.wav": {
+            "329.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
@@ -60,7 +52,7 @@
                 "kind": "audiofile",
                 "local": 1
             },
-            "554.wav": {
+            "440.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
@@ -68,7 +60,7 @@
                 "kind": "audiofile",
                 "local": 1
             },
-            "659.wav": {
+            "554.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
@@ -76,7 +68,7 @@
                 "kind": "audiofile",
                 "local": 1
             },
-            "880.wav": {
+            "659.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
@@ -84,7 +76,7 @@
                 "kind": "audiofile",
                 "local": 1
             },
-            "1108.wav": {
+            "880.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
@@ -92,11 +84,15 @@
                 "kind": "audiofile",
                 "local": 1
             },
-            "1318.wav": {
+            "1108.wav": {
                 "kind": "audiofile",
                 "local": 1
             },
             "1318_saw.wav": {
+                "kind": "audiofile",
+                "local": 1
+            },
+            "1318.wav": {
                 "kind": "audiofile",
                 "local": 1
             }
