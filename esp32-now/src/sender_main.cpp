@@ -26,8 +26,8 @@ constexpr size_t kTouchPinCount = sizeof(kTouchPins) / sizeof(kTouchPins[0]);
 
 // REPLACE WITH THE RECEIVER'S MAC Address
 // original board's MAC address is 68:fe:71:91:47:00
-// new board's MAC address is 8c:94:df:9f:5e:80
-uint8_t broadcastAddress[] = {0x8C, 0x94, 0xDF, 0x9F, 0x5E, 0x80};
+// new board's MAC address is 8c:94:df:a1:0f:44
+uint8_t broadcastAddress[] = {0x8C, 0x94, 0xDF, 0xA1, 0x0F, 0x44};
 
 // Structure example to send data
 // Must match the receiver structure
