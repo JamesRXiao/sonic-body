@@ -9,7 +9,7 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 376.0, 100.0, 704.0, 705.0 ],
+        "rect": [ 34.0, 100.0, 1444.0, 705.0 ],
         "boxes": [
             {
                 "box": {
@@ -76,9 +76,9 @@
                     "patching_rect": [ 2543.3404171466827, 1770.2127532958984, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 2097.0, 1029.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[9]"
                 }
             },
@@ -93,9 +93,9 @@
                     "patching_rect": [ 2202.9148876667023, 1770.2127532958984, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1699.0, 1031.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[10]"
                 }
             },
@@ -110,9 +110,9 @@
                     "patching_rect": [ 1868.8723368644714, 1770.2127532958984, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1308.0, 1031.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[11]"
                 }
             },
@@ -127,9 +127,9 @@
                     "patching_rect": [ 1534.8297860622406, 1770.2127532958984, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 908.0, 1031.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[12]"
                 }
             },
@@ -144,9 +144,9 @@
                     "patching_rect": [ 2709.297862768173, 1557.4467973709106, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 2297.0, 1025.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[13]"
                 }
             },
@@ -161,9 +161,9 @@
                     "patching_rect": [ 2375.2553119659424, 1557.4467973709106, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1895.0, 1029.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[14]"
                 }
             },
@@ -178,9 +178,9 @@
                     "patching_rect": [ 2043.3404207229614, 1557.4467973709106, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1508.0, 1031.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[15]"
                 }
             },
@@ -195,9 +195,9 @@
                     "patching_rect": [ 1702.914891242981, 1557.4467973709106, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1108.0, 1031.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[16]"
                 }
             },
@@ -1141,9 +1141,9 @@
                     "patching_rect": [ 1364.6170213222504, 1557.4467973709106, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 704.0, 1031.0, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[17]"
                 }
             },
@@ -1158,9 +1158,9 @@
                     "patching_rect": [ 2542.0, 1256.0, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 2097.204882800579, 802.127653837204, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[8]"
                 }
             },
@@ -1175,9 +1175,9 @@
                     "patching_rect": [ 2201.0, 1256.0, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1699.332545220852, 804.2553133964539, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[5]"
                 }
             },
@@ -1192,9 +1192,9 @@
                     "patching_rect": [ 1869.0, 1256.0, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1307.8431863188744, 804.2553133964539, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[6]"
                 }
             },
@@ -1209,6 +1209,7 @@
                     "patching_rect": [ 1533.7941829562187, 1256.008374094963, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 907.8431891798973, 804.2553133964539, 87.0, 107.0 ],
+                    "prototypename": "volume_display",
                     "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
                     "varname": "multislider[7]"
@@ -1225,9 +1226,9 @@
                     "patching_rect": [ 2709.0, 1042.0, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 2297.2048813700676, 797.8723347187042, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[4]"
                 }
             },
@@ -1242,9 +1243,9 @@
                     "patching_rect": [ 2374.0, 1042.0, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1895.0772246718407, 802.127653837204, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[3]"
                 }
             },
@@ -1259,10 +1260,9 @@
                     "patching_rect": [ 2042.0001306533813, 1042.0, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1507.8431848883629, 804.2553133964539, 87.0, 107.0 ],
-                    "prototypename": "value_display",
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[2]"
                 }
             },
@@ -1277,9 +1277,9 @@
                     "patching_rect": [ 1703.0, 1042.0, 87.0, 107.0 ],
                     "presentation": 1,
                     "presentation_rect": [ 1107.8431877493858, 804.2553133964539, 87.0, 107.0 ],
-                    "setminmax": [ 0.0, 1300.0 ],
+                    "prototypename": "volume_display",
+                    "setminmax": [ 0.0, 2.0 ],
                     "setstyle": 3,
-                    "settype": 0,
                     "varname": "multislider[1]"
                 }
             },
@@ -2408,9 +2408,9 @@
                     "numinlets": 2,
                     "numoutlets": 3,
                     "outlettype": [ "", "signal", "" ],
-                    "patching_rect": [ 1370.2353557944298, 1007.0, 75.0, 22.0 ],
+                    "patching_rect": [ 1370.2353557944298, 1007.0, 63.0, 22.0 ],
                     "style": "abstraction",
-                    "text": "threadv2 1 1"
+                    "text": "thread 1 1"
                 }
             },
             {
@@ -3959,13 +3959,13 @@
             {
                 "patchline": {
                     "destination": [ "obj-147", 0 ],
-                    "source": [ "obj-62", 1 ]
+                    "source": [ "obj-62", 0 ]
                 }
             },
             {
                 "patchline": {
                     "destination": [ "obj-224", 0 ],
-                    "source": [ "obj-62", 0 ]
+                    "source": [ "obj-62", 1 ]
                 }
             },
             {
