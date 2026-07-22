@@ -12,29 +12,25 @@
 constexpr uint32_t kSerialBaud = 115200;
 constexpr uint32_t kSampleRateHz = 50;
 constexpr uint32_t kSampleIntervalMs = 1000 / kSampleRateHz;
-uint32_t gNextSampleAtMs = 0;
-uint32_t now = 0;
+uint32_t gNextSampleAtMs;
+uint32_t now;
 
-//initialize flags
+// initialize flags
 bool isRecording = false;
 bool sampled = false;
 
-// initialize pins
+// initialize pins (order depends on physical arrangement of threads)
 constexpr uint8_t kTouchPins[] = {15, 2, 4, 13, 12, 14, 27, 33, 32};
-//constexpr uint8_t kTouchPins[] = {2, 4, 12, 13, 14, 15, 27, 33, 32};
 constexpr size_t kTouchPinCount = sizeof(kTouchPins) / sizeof(kTouchPins[0]);
 
 // REPLACE WITH THE RECEIVER'S MAC Address
-// original board's MAC address is 68:fe:71:91:47:00
-// new board's MAC address is 8c:94:df:a1:0f:44
 uint8_t broadcastAddress[] = {0x8C, 0x94, 0xDF, 0xA1, 0x0F, 0x44};
 
-// Structure example to send data
-// Must match the receiver structure
+// Structure to send data, must match the receiver structure
 typedef struct struct_message {
     uint32_t id; // must be unique for each sender board
     uint32_t sampleIndex;
-    uint32_t senseVals[9];
+    uint32_t senseVals[9]; // must be same size as kTouchPinCount
 } struct_message;
 
 struct_message myData; // Create a struct_message called myData
@@ -45,21 +41,34 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   Serial.print("\r\nLast Packet Send Status:\t");
   Serial.println((status == ESP_NOW_SEND_SUCCESS) ? "Delivery Success" : "Delivery Fail");
 }
- 
+
+// set recording to true, set board ID, set sampleIndex to 0, start timing
 void startRecording() {
   isRecording = true;
+  myData.id = 2; // Replace with appropriate ID
   myData.sampleIndex = 0;
-  gNextSampleAtMs = millis();
+  now = millis();
+  gNextSampleAtMs = now;
 }
 
+// print sensor data
+void printSample() {
+  for (size_t i = 0; i < kTouchPinCount; ++i) {
+    Serial.print(myData.senseVals[i]);
+    Serial.print(" ");
+  }
+  Serial.println();
+}
+
+// gather sensor data
 void streamSampleIfDue() {
   sampled = false;
   if (isRecording) {
-    
+
     //only continue when internal clock is greater than next sample time
     now = millis();
+    if (now >= gNextSampleAtMs) { 
 
-    if (now >= gNextSampleAtMs) {
       //get the sensor data
       for (size_t i = 0; i < kTouchPinCount; ++i) {
         myData.senseVals[i] = touchRead(kTouchPins[i]);
@@ -68,32 +77,21 @@ void streamSampleIfDue() {
       gNextSampleAtMs = now + kSampleIntervalMs; //set the time for the next sample
       ++myData.sampleIndex; //increment the sample index
       sampled = true;
+      // printSample();
     }
   }
 }
 
-void printSampleIfDue() {
-  if (sampled) {
-    for (size_t i = 0; i < kTouchPinCount; ++i) {
-      Serial.print(myData.senseVals[i]);
-      Serial.print(" ");
-    }
-    Serial.println();
-  }
-}
-
+// send message if sensor data has been gathered
 void sendMessageIfDue() {
   if (sampled) {
     // Send message via ESP-NOW
     esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
     
+    // print ack messages
     if (result == ESP_OK) {
       Serial.print("Data sent with success: ");
-      for (size_t i = 0; i < kTouchPinCount; ++i) {
-        Serial.print(myData.senseVals[i]);
-        Serial.print(" ");
-      }
-      Serial.println();
+      printSample();
     }
     else {
       Serial.println("Error sending the data");
@@ -102,11 +100,8 @@ void sendMessageIfDue() {
 }
 
 void setup() {
-  // Init Serial Monitor
-  Serial.begin(kSerialBaud);
-
-  // Set device as a Wi-Fi Station
-  WiFi.mode(WIFI_STA);
+  Serial.begin(kSerialBaud); // Init Serial Monitor
+  WiFi.mode(WIFI_STA); // Set device as a Wi-Fi Station
 
   // Init ESP-NOW
   if (esp_now_init() != ESP_OK) {
@@ -128,16 +123,11 @@ void setup() {
     return;
   }
 
-  // set board ID
-  myData.id = 1; //Replace with appropriate ID
-
-  //set recording to true
+  // Set recording to true
   startRecording();
 }
  
 void loop() {
-  // Set values to send
-  streamSampleIfDue();
-  //printSampleIfDue();
-  sendMessageIfDue();
+  streamSampleIfDue(); // Set values to send
+  sendMessageIfDue(); // Send values
 }
