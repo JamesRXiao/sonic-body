@@ -13,6 +13,64 @@
         "boxes": [
             {
                 "box": {
+                    "id": "obj-3",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 634.4915561676025, 99.0, 68.0, 22.0 ],
+                    "text": "array.mean"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-4",
+                    "maxclass": "newobj",
+                    "numinlets": 2,
+                    "numoutlets": 2,
+                    "outlettype": [ "", "" ],
+                    "patching_rect": [ 634.4915561676025, 67.0, 67.0, 22.0 ],
+                    "text": "zl.stream 2"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-25",
+                    "maxclass": "number",
+                    "numinlets": 1,
+                    "numoutlets": 2,
+                    "outlettype": [ "", "bang" ],
+                    "parameter_enable": 0,
+                    "patching_rect": [ 678.9915561676025, 484.8739206790924, 50.0, 22.0 ]
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-15",
+                    "maxclass": "newobj",
+                    "numinlets": 2,
+                    "numoutlets": 1,
+                    "outlettype": [ "int" ],
+                    "patching_rect": [ 678.9915561676025, 455.46215772628784, 29.5, 22.0 ],
+                    "text": "/ 5"
+                }
+            },
+            {
+                "box": {
+                    "bubble": 1,
+                    "fontface": 0,
+                    "fontsize": 9.0,
+                    "id": "obj-7",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 597.0, 554.5, 121.5, 21.0 ],
+                    "style": "label",
+                    "text": "interpolation time in ms"
+                }
+            },
+            {
+                "box": {
                     "bubble": 1,
                     "id": "obj-87",
                     "maxclass": "comment",
@@ -42,8 +100,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 938.0, 278.0, 80.40000140666962, 104.0 ],
-                    "presentation_linecount": 7,
+                    "patching_rect": [ 938.0, 278.0, 84.0, 104.0 ],
                     "prototypename": "speech_bubble",
                     "text": "take the mean of the last 10 values to smooth out any peaks"
                 }
@@ -58,7 +115,6 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 446.0, 304.0, 188.79311335086823, 37.0 ],
-                    "presentation_linecount": 2,
                     "text": "The volume factor to scale by, expressed as a fraction"
                 }
             },
@@ -72,7 +128,6 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 411.0, 859.0, 107.51724743843079, 51.0 ],
-                    "presentation_linecount": 3,
                     "text": "bangs when switching the value"
                 }
             },
@@ -129,9 +184,8 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 319.0, 551.0, 218.0, 118.0 ],
-                    "presentation_linecount": 8,
-                    "text": "Wait for delay time to update before sending target value to line function.\n\nThe equilibrium interpolation time is 0 (target and current value are equal at equilibrium), so if target value is sent before time then the output jumps suddenly"
+                    "patching_rect": [ 322.0, 557.0, 218.0, 118.0 ],
+                    "text": "Wait for delay time to update before sending target value to line function.\n\nThe equilibrium interpolation time is 0 (target and current value are equal at equilibrium), so if target value is sent before time updates, then the output jumps suddenly"
                 }
             },
             {
@@ -155,29 +209,6 @@
                     "outlettype": [ "" ],
                     "patching_rect": [ 546.0, 605.0, 146.0, 22.0 ],
                     "text": "if $i1 > 0 then $f2 else $f3"
-                }
-            },
-            {
-                "box": {
-                    "format": 6,
-                    "id": "obj-88",
-                    "maxclass": "flonum",
-                    "numinlets": 1,
-                    "numoutlets": 2,
-                    "outlettype": [ "", "bang" ],
-                    "parameter_enable": 0,
-                    "patching_rect": [ 683.0, 481.0, 50.0, 22.0 ]
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-86",
-                    "maxclass": "newobj",
-                    "numinlets": 2,
-                    "numoutlets": 1,
-                    "outlettype": [ "float" ],
-                    "patching_rect": [ 683.0, 453.0, 29.5, 22.0 ],
-                    "text": "* 2."
                 }
             },
             {
@@ -223,7 +254,7 @@
                     "numoutlets": 2,
                     "outlettype": [ "", "bang" ],
                     "parameter_enable": 0,
-                    "patching_rect": [ 637.0, 422.0, 50.0, 22.0 ]
+                    "patching_rect": [ 637.0, 422.6890504360199, 50.0, 22.0 ]
                 }
             },
             {
@@ -323,11 +354,11 @@
                 "box": {
                     "id": "obj-16",
                     "maxclass": "newobj",
-                    "numinlets": 4,
+                    "numinlets": 3,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 546.0, 512.0, 156.0, 22.0 ],
-                    "text": "if $f1 > $f2 then $i3 else $i4"
+                    "patching_rect": [ 546.0, 512.0, 152.0, 22.0 ],
+                    "text": "if $f1 != 0. then $i2 else $i3"
                 }
             },
             {
@@ -341,7 +372,6 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 579.0, 954.0, 76.72414195537567, 31.0 ],
-                    "presentation_linecount": 2,
                     "text": "starts/stops the playlist"
                 }
             },
@@ -349,7 +379,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-19",
-                    "index": 0,
+                    "index": 1,
                     "maxclass": "outlet",
                     "numinlets": 1,
                     "numoutlets": 0,
@@ -382,7 +412,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-6",
-                    "index": 0,
+                    "index": 3,
                     "maxclass": "outlet",
                     "numinlets": 1,
                     "numoutlets": 0,
@@ -404,7 +434,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-12",
-                    "index": 0,
+                    "index": 2,
                     "maxclass": "outlet",
                     "numinlets": 1,
                     "numoutlets": 0,
@@ -420,7 +450,6 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 748.0, 778.0, 111.0, 37.0 ],
-                    "presentation_linecount": 2,
                     "text": "incoming audio file output"
                 }
             },
@@ -428,11 +457,11 @@
                 "box": {
                     "comment": "",
                     "id": "obj-11",
-                    "index": 0,
+                    "index": 2,
                     "maxclass": "inlet",
                     "numinlets": 0,
                     "numoutlets": 1,
-                    "outlettype": [ "" ],
+                    "outlettype": [ "signal" ],
                     "patching_rect": [ 709.0, 781.0, 30.0, 30.0 ]
                 }
             },
@@ -444,8 +473,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 787.0, 390.0, 102.0, 145.0 ],
-                    "presentation_linecount": 10,
+                    "patching_rect": [ 787.0, 390.0, 104.0, 145.0 ],
                     "prototypename": "speech_bubble",
                     "text": "Find the time to interpolate between the current volume and the next volume \n(ramp down is 1/2 rate of ramp up)"
                 }
@@ -460,7 +488,6 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 429.0, 225.0, 200.86207950115204, 37.0 ],
-                    "presentation_linecount": 2,
                     "text": "The volume factor to scale by, held between 0 and the margin"
                 }
             },
@@ -476,28 +503,6 @@
                     "patching_rect": [ 853.0, 137.0, 143.0, 22.0 ],
                     "style": "value_format",
                     "text": "r scale_threshold_margin"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-10",
-                    "maxclass": "newobj",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 637.0, 113.0, 68.0, 22.0 ],
-                    "text": "array.mean"
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-3",
-                    "maxclass": "newobj",
-                    "numinlets": 2,
-                    "numoutlets": 2,
-                    "outlettype": [ "", "" ],
-                    "patching_rect": [ 637.0, 67.0, 74.0, 22.0 ],
-                    "text": "zl.stream 10"
                 }
             },
             {
@@ -592,7 +597,7 @@
                 "box": {
                     "comment": "",
                     "id": "obj-1",
-                    "index": 0,
+                    "index": 1,
                     "maxclass": "inlet",
                     "numinlets": 0,
                     "numoutlets": 1,
@@ -651,20 +656,20 @@
         "lines": [
             {
                 "patchline": {
-                    "destination": [ "obj-3", 0 ],
+                    "destination": [ "obj-4", 0 ],
                     "source": [ "obj-1", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-63", 0 ],
-                    "source": [ "obj-10", 0 ]
                 }
             },
             {
                 "patchline": {
                     "destination": [ "obj-76", 1 ],
                     "source": [ "obj-11", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "obj-25", 0 ],
+                    "source": [ "obj-15", 0 ]
                 }
             },
             {
@@ -721,6 +726,12 @@
             },
             {
                 "patchline": {
+                    "destination": [ "obj-16", 2 ],
+                    "source": [ "obj-25", 0 ]
+                }
+            },
+            {
+                "patchline": {
                     "destination": [ "obj-43", 1 ],
                     "midpoints": [ 732.5, 187.0, 723.0, 187.0 ],
                     "source": [ "obj-26", 0 ]
@@ -735,7 +746,7 @@
             },
             {
                 "patchline": {
-                    "destination": [ "obj-10", 0 ],
+                    "destination": [ "obj-63", 0 ],
                     "source": [ "obj-3", 0 ]
                 }
             },
@@ -749,14 +760,6 @@
                 "patchline": {
                     "destination": [ "obj-17", 0 ],
                     "source": [ "obj-33", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-16", 1 ],
-                    "midpoints": [ 699.5, 724.0, 756.9502897777129, 724.0, 756.9502897777129, 506.28400985198095, 601.1666666666666, 506.28400985198095 ],
-                    "order": 3,
-                    "source": [ "obj-34", 0 ]
                 }
             },
             {
@@ -786,6 +789,12 @@
                 "patchline": {
                     "destination": [ "obj-55", 0 ],
                     "source": [ "obj-36", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "obj-3", 0 ],
+                    "source": [ "obj-4", 0 ]
                 }
             },
             {
@@ -908,15 +917,15 @@
             },
             {
                 "patchline": {
-                    "destination": [ "obj-16", 2 ],
-                    "order": 1,
+                    "destination": [ "obj-15", 0 ],
+                    "order": 0,
                     "source": [ "obj-80", 0 ]
                 }
             },
             {
                 "patchline": {
-                    "destination": [ "obj-86", 0 ],
-                    "order": 0,
+                    "destination": [ "obj-16", 1 ],
+                    "order": 1,
                     "source": [ "obj-80", 0 ]
                 }
             },
@@ -941,18 +950,6 @@
             },
             {
                 "patchline": {
-                    "destination": [ "obj-88", 0 ],
-                    "source": [ "obj-86", 0 ]
-                }
-            },
-            {
-                "patchline": {
-                    "destination": [ "obj-16", 3 ],
-                    "source": [ "obj-88", 0 ]
-                }
-            },
-            {
-                "patchline": {
                     "destination": [ "obj-92", 0 ],
                     "source": [ "obj-90", 0 ]
                 }
@@ -965,7 +962,6 @@
                 }
             }
         ],
-        "autosave": 0,
         "styles": [
             {
                 "name": "bang_format",
